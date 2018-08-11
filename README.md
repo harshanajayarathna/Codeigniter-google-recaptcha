@@ -12,13 +12,13 @@ CodeIgniter library used for Google's reCAPTCHA V2
 <ol>
   <li>Download the project into your computer</li>
   <li>Copy libraries/Google_recaptcha.php in to folder application/libraries and config/google_recaptcha.php in to folder application/config</li>
-  <li>Go to <code> https://www.google.com/recaptcha/admin </code> and register under reCAPTCHA V2 </li>
+  <li>Go to <code>https://www.google.com/recaptcha/admin</code> and register under reCAPTCHA V2 </li>
   <li>Get the Secret key and Site key</li>
-  <li>Put them appropriate places in application/config/google_recaptcha.php file </li>
-  <li>Load application/config/google_recaptcha.php  and application/libraries/Google_recaptcha.php inside your controller </li>
+  <li>Put them appropriate places in <code>application/config/google_recaptcha.php</code> file </li>
+  <li>Load <code>application/config/google_recaptcha.php</code> and <code>application/libraries/Google_recaptcha.php</code> inside your controller </li>
   <li>In your view import; 
-  Add this <code> <script src='<?php echo $this->config->item('GOOGLE_CLIENT_API'); ?>'></script> </code> after the jquery (Because in here use ajax form submission) <br/>
-  Add this <code> <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div> </code> inside form
+  Add this <code><script src='<?php echo $this->config->item('GOOGLE_CLIENT_API'); ?>'></script></code> after the jquery (Because in here use ajax form submission) <br/>
+  Add this <code><div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div></code> inside form
   </li>
   <li>Then Submit form as ajax post
   </li>
