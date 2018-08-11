@@ -3,13 +3,11 @@ CodeIgniter library used for Google's reCAPTCHA V2
 
 ## Content 
 <ul>
-  <li>Pre-requisites</li>
   <li>How to Install & Configure</li>
   <li>How to Validate</li>
   <li>Example</li>
 </ul>
 
-## Jquery, Boostrap
 ## How to Install & Configure
 <ol>
   <li>Download the project into your computer</li>
