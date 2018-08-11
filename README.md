@@ -16,94 +16,47 @@ CodeIgniter library used for Google's reCAPTCHA V2
 ## Example
 
 Controller
-<code>
 
-<?php
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-/**
- * @package CodeIgniter
- * @subpackage codeigniter-google-recaptcha
- * @author Harshana Jayarathna <harshanajayarathna@gmail.com>
- * @copyright (c) 2018, Harshana Jayarathna 
- */
-class Form extends CI_Controller {
-
-    function __construct() 
-    {
-        parent::__construct();
-        
-        // load config, libraries, helpers, models, etc...
-        $this->load->config('google_recaptcha');
-        $this->load->library(array('form_validation', 'google_recaptcha'));        
-        $this->load->helper('string'); 
-        
-    }
-
-    /**
-     * This is index function, used to load form view with reCaptcha
-     */
-    public function index() 
-    {
-        $google_recaptcha = new Google_recaptcha();
-        $data['recaptcha'] = $google_recaptcha->generate_google_recaptcha();
-        
-        $this->load->view('form', $data);
-    }
-    
-    
-    public function save()
-    {        
-        // Validate user inputs         
-                       
-        $this->form_validation->set_rules('recaptcha','recaptcha','trim|required|callback_validate_recaptcha');
-             
-        if ($this->form_validation->run() == FALSE) 
-        {
-            $errors = validation_errors();
-            echo json_encode(['error' => $errors]);
-        } else 
-        {
-            // TO DO
-            echo json_encode(['success' => 'Captcha Validation Success']);
-            
-        }
-    }
-    
-    
-    function validate_recaptcha($str)        
-    {      
-        // check recaptcha is empty
-        if(empty(trim($this->input->post('recaptcha', TRUE))))
-        {
-          $this->form_validation->set_message('validate_recaptcha', 'The {field} field is required.');
-          return FALSE;
-        }
-        else
-        {                                    
-            $captchainput = trim($this->input->post('recaptcha', TRUE));
-            
-            // create Google recaptcha object
-            $google_recaptcha = new Google_recaptcha();
-            
-            // validate google recaptcha
-            $json_response = $google_recaptcha->validate_google_recaptcha($captchainput );
-            
-            if(!$json_response->success)
-            {
-                $this->form_validation->set_message('validate_recaptcha', 'The {field} field is telling me that you are a robot. Shall we give it another try?');
-                return FALSE;                
-            }
-            else
-            {
-               return TRUE; 
-            }          
-        }        
-
-    }
-
-}
-
-
-
-</code>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">Form</span> <span class="pl-k">extends</span> <span class="pl-e">CI_Controller</span> {</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">	<span class="pl-k">public</span> <span class="pl-k">function</span> <span class="pl-en">index</span>()</span>
+<span class="pl-s1">	{</span>
+<span class="pl-s1">		<span class="pl-c"><span class="pl-c">/*</span></span></span>
+<span class="pl-s1"><span class="pl-c">		 Load the reCAPTCHA library.</span></span>
+<span class="pl-s1"><span class="pl-c">		 You can pass the keys here by passing an array to the class.</span></span>
+<span class="pl-s1"><span class="pl-c">		 Check the "Setting the keys" section for more details</span></span>
+<span class="pl-s1"><span class="pl-c">		<span class="pl-c">*/</span></span></span>
+<span class="pl-s1">		<span class="pl-smi">$recaptcha</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Recaptcha</span>();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">		<span class="pl-c"><span class="pl-c">/*</span></span></span>
+<span class="pl-s1"><span class="pl-c">		 Create the reCAPTCHA box.</span></span>
+<span class="pl-s1"><span class="pl-c">		 You can pass an array of attributes to this method.</span></span>
+<span class="pl-s1"><span class="pl-c">		 Check the "Creating the reCAPTCHA box" section for more details</span></span>
+<span class="pl-s1"><span class="pl-c">		<span class="pl-c">*/</span></span></span>
+<span class="pl-s1">		<span class="pl-smi">$box</span> <span class="pl-k">=</span> <span class="pl-smi">$recaptcha</span><span class="pl-k">-&gt;</span>create_box();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">		<span class="pl-c"><span class="pl-c">//</span> Check if the form is submitted</span></span>
+<span class="pl-s1">		<span class="pl-k">if</span>(<span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">input</span><span class="pl-k">-&gt;</span>post(<span class="pl-s"><span class="pl-pds">'</span>action<span class="pl-pds">'</span></span>) <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>submit<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">		{</span>
+<span class="pl-s1">			<span class="pl-c"><span class="pl-c">/*</span></span></span>
+<span class="pl-s1"><span class="pl-c">			 Check if the reCAPTCHA was solved</span></span>
+<span class="pl-s1"><span class="pl-c">			 You can pass arguments to the `is_valid` method,</span></span>
+<span class="pl-s1"><span class="pl-c">			 but it should work fine without any.</span></span>
+<span class="pl-s1"><span class="pl-c">			 Check the "Validating the reCAPTCHA" section for more details</span></span>
+<span class="pl-s1"><span class="pl-c">			<span class="pl-c">*/</span></span></span>
+<span class="pl-s1">			<span class="pl-smi">$is_valid</span> <span class="pl-k">=</span><span class="pl-smi">$recaptcha</span><span class="pl-k">-&gt;</span>is_valid();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">			<span class="pl-k">if</span>(<span class="pl-smi">$is_valid</span>[<span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>])</span>
+<span class="pl-s1">			{</span>
+<span class="pl-s1">				<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>reCAPTCHA solved<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">			}</span>
+<span class="pl-s1">			<span class="pl-k">else</span></span>
+<span class="pl-s1">			{</span>
+<span class="pl-s1">				<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>reCAPTCHA not solved/an error occured<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">			}</span>
+<span class="pl-s1">		}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">		<span class="pl-smi">$this</span><span class="pl-k">-&gt;</span><span class="pl-smi">load</span><span class="pl-k">-&gt;</span>view(<span class="pl-s"><span class="pl-pds">'</span>form<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>recaptcha<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-smi">$box</span>]);</span>
+<span class="pl-s1">	}</span></pre></div>
