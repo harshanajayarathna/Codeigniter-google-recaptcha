@@ -4,7 +4,7 @@ CodeIgniter library used for Google's reCAPTCHA V2
 ## Content 
 <ul>
   <li>How to Install & Configure</li>
-  <li>How to Validate<li>
+  <li>How to Validate</li>
   <li>Example</li>
 </ul>
 
@@ -25,4 +25,12 @@ CodeIgniter library used for Google's reCAPTCHA V2
   
 </ol>
 
+
+<dl>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
+
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
 
