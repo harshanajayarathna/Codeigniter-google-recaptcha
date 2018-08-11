@@ -25,7 +25,7 @@ CodeIgniter library used for Google's reCAPTCHA V2
   
 </ol>
 
-
+<pre lang="no-highlight"><code>
 <dl>
   <dt>Definition list</dt>
   <dd>Is something people use sometimes.</dd>
@@ -33,4 +33,5 @@ CodeIgniter library used for Google's reCAPTCHA V2
   <dt>Markdown in HTML</dt>
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
+</code></pre>
 
