@@ -19,7 +19,8 @@ CodeIgniter library used for Google's reCAPTCHA V2
   <li>In your view import; 
   Add this <pre lang="no-highlight"><code><script src='<?php echo $this->config->item('GOOGLE_CLIENT_API'); ?>'></script></code></pre> after the jquery (Because in here use ajax form submission) <br/>
   Add this 
-    <pre lang="no-highlight"><code><div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div></code></pre> 
+    <div class="highlight highlight-text-html-php">
+      <pre lang="no-highlight"><code><div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div></code></pre> </div>
     inside form
   </li>
   <li>Then Submit form as ajax post
