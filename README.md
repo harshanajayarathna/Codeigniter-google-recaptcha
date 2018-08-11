@@ -18,20 +18,12 @@ CodeIgniter library used for Google's reCAPTCHA V2
   <li>Load <code>application/config/google_recaptcha.php</code> and <code>application/libraries/Google_recaptcha.php</code> inside your controller </li>
   <li>In your view import; 
   Add this <pre lang="no-highlight"><code><script src='<?php echo $this->config->item('GOOGLE_CLIENT_API'); ?>'></script></code></pre> after the jquery (Because in here use ajax form submission) <br/>
-  Add this <pre lang="no-highlight"><code><div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div></code></pre> inside form
+  Add this 
+    <pre lang="no-highlight"><code><div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('GOOGLE_SITE_KEY'); ?>"></div></code></pre> 
+    inside form
   </li>
   <li>Then Submit form as ajax post
   </li>
   
 </ol>
-
-<pre lang="no-highlight"><code>
-<dl>
-  <dt>Definition list</dt>
-  <dd>Is something people use sometimes.</dd>
-
-  <dt>Markdown in HTML</dt>
-  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
-</dl>
-</code></pre>
 
