@@ -1,13 +1,6 @@
 # Codeigniter-google-recaptcha
 CodeIgniter library used for Google's reCAPTCHA V2
 
-## Content 
-<ul>
-  <li>How to Install & Configure</li>
-  <li>How to Validate</li>
-  <li>Example</li>
-</ul>
-
 ## How to Install & Configure
 <ol>
   <li>Download the project into your computer</li>
@@ -18,7 +11,5 @@ CodeIgniter library used for Google's reCAPTCHA V2
   <li>Load <code>application/config/google_recaptcha.php</code> and <code>application/libraries/Google_recaptcha.php</code> inside your controller </li>
   <li>Change controllers and views as following examples
   </li>
-  
-  
 </ol>
 
